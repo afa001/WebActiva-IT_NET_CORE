@@ -1,0 +1,66 @@
+﻿@model IEnumerable<web.Models.AlbumDetails>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Album Details</h1>
+
+<p>
+    <a asp-action="ConsultarAlbumsFavorites">Favoritos</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AlbumId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thumbnailUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thumbnailUrl)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Agregate", "Agregate", new { Model })*@
+                @Html.ActionLink("Agregate", "Agregate",
+                new
+                     {
+                    Id = item.Id,
+                    Title = item.Title,
+                    AlbumId = item.AlbumId
+                })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

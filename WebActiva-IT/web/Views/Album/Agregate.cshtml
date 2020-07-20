@@ -1,0 +1,40 @@
+﻿@model web.Models.AlbumFavorites
+@{
+    ViewData["Title"] = "Album Favorites";
+}
+
+<h1>Favoritos</h1>
+
+<h3>¿Quieres agregar esta cancion a tus favoritos?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdAlbum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdAlbum)
+        </dd>
+    </dl>
+
+    <form asp-action="Agregate">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Title" />
+        <input type="hidden" asp-for="IdAlbum" />
+
+        <input type="submit" value="Agregar" /> |
+        <a asp-action="Details">Volver</a>
+    </form>
+</div>
